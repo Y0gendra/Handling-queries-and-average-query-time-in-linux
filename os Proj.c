@@ -11,78 +11,78 @@ the total time he spent on handling queries and average query time. */
 #include<stdio.h>
 int main()
 {
- int n;      //n number of process
- int r;      // number of resources
- int i,j,k,cnt,cntt;
- int avail[10],p[10];
- int need[10][10], alloc[10][10], max[10][10];
+ int a;      //a number of process
+ int b;      //b number of resources
+ int i,j,k,cnt,cunt;
+ int avail[10],q[10];
+ int need[10][10], allc[10][10], maxi[10][10];
 
+ printf("\nWelcome\n");
  printf("\nEnter number of process :  ");
- scanf("%d",&n);
+ scanf("%d",&a);
  printf("\nEnter  resources available :  ");
- scanf("%d",&r);
+ scanf("%d",&b);
  printf("\nEnter insatnces for resources :  \n");
- for(i=0;i<r;i++)
+ for(i=0;i<b;i++)
  {  printf("R%d  ",i+1);
   scanf("  %d",&avail[i]);
   }
  printf("\n Enter allocation matrix   \n");
- for(i=0;i<n;i++)
+ for(i=0;i<a;i++)
  {
- printf("p%d  ",i+1);          p[i]=0;
- for(j=0;j<r;j++)
+ printf("p%d  ",i+1);          q[i]=0;
+ for(j=0;j<b;j++)
  {
-  scanf("   %d",&alloc[i][j]);
+  scanf("   %d",&allc[i][j]);
  }
 }
   printf("\n Enter MAX matrix    \n");
 
- for(i=0;i<n;i++)
+ for(i=0;i<a;i++)
  {
  printf("p%d  ",i+1);
- for(j=0;j<r;j++)
+ for(j=0;j<b;j++)
  {
-  scanf("   %d",&max[i][j]);
+  scanf("   %d",&maxi[i][j]);
  }
  }
 
- for(i=0;i<n;i++)
+ for(i=0;i<a;i++)
  {
  printf(" \np%d\t  ",i+1) ;
- for(j=0;j<r;j++)
+ for(j=0;j<b;j++)
  {
-  need[i][j]=max[i][j]-alloc[i][j];
+  need[i][j]=maxi[i][j]-allc[i][j];
   printf("    \t%d  ",need[i][j]);
   }
  }
- k=0;     cntt=0;
+ k=0;     cunt=0;
  printf("\n\n");
  while(k<15)
  {
- for(i=0;i<n;i++)
+ for(i=0;i<a;i++)
  {  cnt=0;
- for(j=0;j<r;j++)
+ for(j=0;j<b;j++)
  {
-  if(p[i]==1) break;
+  if(q[i]==1) break;
   if(need[i][j]<=avail[j])
   {
   cnt++;
   }
-  if(cnt==r)
+  if(cnt==b)
   {
-  for(j=0;j<r;j++)
+  for(j=0;j<b;j++)
   {
-  avail[j]+=alloc[i][j];
+  avail[j]+=allc[i][j];
   }
-  printf("p%d\t  ",i+1);  p[i]=1;     cntt++;
+  printf("p%d\t  ",i+1);  q[i]=1;     cunt++;
   }
  }
  } k++;
  }
- if(cntt<n-1)
+ if(cunt<a-1)
  {
  printf("\n deadlock ");
  }
       getch();
  }
-
